@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    #<!--action Books-->
+          <record model = "ir.actions.act_windows" id = "action_books" >
+
+                                <field name = "name" > Books < /field >
+                                <field name = "type" > ir.actions.act_windows < /field >
+                                <field name = "res.model" > Library.book < /field >
+                                 <field name = "view_type" > form < /field >
+                                <field name = "view_mode" > tree, form < /field >
+                                <field name = "help" type = "html"/>
+          </record>
+    #<!--action partners-->
+          <record model = "ir.actions.act_windows" id = "action_partners" >
+
+                                <field name = "name" > Partners < /field >
+                                <field name = "type" > ir.actions.act_windows < /field >
+                                <field name = "res.model" > Library.partner < /field >
+                                 <field name = "view_type" > form < /field >
+                                <field name = "view_mode" > tree, form < /field >
+                                <field name = "help" type = "html"/>
+          </record>
+#<!--action rentals-->
+          <record model = "ir.actions.act_windows" id = "action_rentals" >
+
+                                <field name = "name" >Rentals< /field >
+                                <field name = "type" > ir.actions.act_windows < /field >
+                                <field name = "res.model" > Library.rental < /field >
+                                 <field name = "view_type" > form < /field >
+                                <field name = "view_mode" > tree, form < /field >
+                                <field name = "help" type = "html" />
+           </record>
+                        
+#<!--action publishers-->
+          <record model = "ir.actions.act_windows" id = "action_publishers" >
+
+                                <field name = "name" > Publishers< /field >
+                                <field name = "type" > ir.actions.act_windows < /field >
+                                <field name = "res.model" > Library.publisher < /field >
+                                 <field name = "view_type" > form < /field >
+                                <field name = "view_mode" > tree, form < /field >
+                                <field name = "help" type = "html" />
+          </record>
+#<!--menuitems Library-->
+                        <menuitem id="base_library_menu" name="Library" groups="group_library_manager" sequence="0"
+                        web_icon="openacademy,static\description\icon.png"/>
+#<!--menuitems Books-->
+                        <menuitem id = "Books_menu_one" name = "Books"
+                        groups = "group_library_manager"
+                        parent = "base_library_menu" sequence="0"/>
+#<!--sub-menu Books-->
+                        <menuitem id = "Books_menu_two" name = "Books"
+                        groups = "group_library_manager"
+                        parent= "Books_menu_one" sequence="1" action="action_books"/>
+
+#<!--menuitems Partners-->
+    
+                        <menuitem id = "Partners_menu_one" name = "Partners"
+                        groups = "group_library_manager"
+                        parent = "base_library_menu"  sequence="0"/>
+#<!--sub-menu Partners-->
+                         <menuitem id = "Partners_menu_two" name = "Partners"
+                        groups =  "group_library_manager"
+                        parent= "Partners_menu_one" sequence="1" action="action_partners"/>
+#<!--menuitems Rentals-->
+                        
+                        <menuitem id = "Rentals_menu_one" name = "Rentals"
+                        groups = "group_library_manager"
+                        parent = "base_library_menu" sequence="0"/>
+#<!--sub-menu Rentals-->
+                        <menuitem id = "Rentals_menu_two" name = "Rentals"
+                        groups ="group_library_manager"
+                        parent= "Rentals_menu_one"sequence="1"
+                        action="action_rentals"/>
+#<!--menuitems Publishers-->
+                       
+                        <menuitem id = "Publishers_menu_one" name = "Publishers"
+                        groups = "group_library_manager"
+                        parent = "base_library_menu" sequence="0"/>
+#<!--sub-menu Publishers-->
+                        <menuitem id ="Publishers_menu_two" name = "Publishers"
+                        groups ="group_library_manager"
+                        parent= "Publishers_menu_one" sequence="1"
+                        action="action_publishers"/>
+#<!--Books form view -->
+           <record id="Books_form" model="ir.ui.view">
+                 <field name="name">Library.book.form</field>
+                 <field name="res.model">Library.book</field>
+                 <field name="arch" type="xml">
+                   <form string="Books">
+                     <sheet>
+                        <group>
+                           <group>
+                                <field name="name"/>
+                                <field name="author_ids"/>
+                           </group>
+                           <group>
+                                <field name="edition_date"/>
+                                <field name="isbn"/>
+                                <field name="publisher_id"/>
+                                <field name="rental_ids"/>
+                           </group>
+                        </group>
+                     </sheet>
+                </form>
+              </field>
+          </record>
+#<!-Books tree view -->
+        <record id="Books_tree" model="ir.ui.view">
+                 <field name="name">Library.book.tree</field>
+                 <field name="res.model">Library.book</field>
+                 <field name="arch" type="xml">
+                    <tree string="Books">
+                                <field name="name"/>
+                                <field name="author_ids"/>
+                                <field name="edition_date"/>
+                                <field name="isbn"/>
+                                <field name="publisher_id"/>
+                                <field name="rental_ids"/>
+                    </tree>
+                  </field>
+        </record>
+ #<!--Partners form view -->
+           <record id="Partners_form" model="ir.ui.view">
+                 <field name="name">Library.partner.form</field>
+                 <field name="res.model">Library.partner</field>
+                 <field name="arch" type="xml">
+                   <form string="Partner">
+                     <sheet>
+                        <group>
+                           <group>
+                                <field name="name"/>
+                                <field name="email"/>
+                                <field name="address"/>
+                           </group>
+                           <group>
+                                <field name="partner_type"/>
+                                <field name="rental_ids"/>
+                           </group>
+                        </group>
+                     </sheet>
+                </form>
+              </field>
+          </record>
+#<!-Partners tree view -->
+        <record id="Partners_tree" model="ir.ui.view">
+                 <field name="name">Library.partner.tree</field>
+                 <field name="res.model">Library.partner</field>
+                 <field name="arch" type="xml">
+                    <tree string="Partners">
+                                <field name="name"/>
+                                <field name="email"/>
+                                <field name="address"/>
+                                <field name="partner_type"/>
+                                <field name="rental_ids"/>
+                    </tree>
+                  </field>
+        </record>
+#<!--Rentals-- form view -->
+           <record id="Rentals_form" model="ir.ui.view">
+                 <field name="name">Library.rental.form</field>
+                 <field name="res.model">Library.rental</field>
+                 <field name="arch" type="xml">
+                   <form string="Rentals">
+                     <sheet>
+                        <group>
+                           <group>
+                                <field name="customer_id"/>
+                                <field name="book_id"/>
+                           </group>
+                           <group>
+                                <field name="rental_date"/>
+                                <field name="return_date"/>
+                           </group>
+                           <group>
+                                <field name="customer_address"/>
+                                <field name="customer_email"/>
+                           </group>
+                           <group>
+                                <field name="book_authors"/>
+                                <field name="book_edition_date"/>
+                                <field name="book_publisher"/>
+                           </group>
+                        </group>
+                     </sheet>
+                </form>
+              </field>
+          </record>
+#<!-Rentals tree view -->
+        <record id="Rentals_tree" model="ir.ui.view">
+                 <field name="name">Library.rental.tree</field>
+                 <field name="res.model">Library.rental</field>
+                 <field name="arch" type="xml">
+                    <tree string="Rentals">
+                                <field name="customer_id"/>
+                                <field name="book_id"/>
+                                <field name="rental_date"/>
+                                <field name="return_date"/>
+                                <field name="customer_address"/>
+                                <field name="customer_email"/>
+                                <field name="book_authors"/>
+                                <field name="book_edition_date"/>
+                                <field name="book_publisher"/>
+                    </tree>
+                  </field>
+        </record>
+#<!--Publishers form view -->
+           <record id="Publishers_form" model="ir.ui.view">
+                 <field name="name">Library.publisher.form</field>
+                 <field name="res.model">Library.publisher</field>
+                 <field name="arch" type="xml">
+                   <form string="Publisher">
+                     <sheet>
+                        <group>
+                           <group>
+                                <field name="name"/>
+                           </group>
+                     </sheet>
+                </form>
+              </field>
+          </record>
+#<!-Publishers tree view -->
+        <record id="Publishers_tree" model="ir.ui.view">
+                 <field name="name">Library.publisher.tree</field>
+                 <field name="res.model">Library.publisher</field>
+                 <field name="arch" type="xml">
+                    <tree string="Publishers">
+                                <field name="name"/>
+                    </tree>
+                  </field>
+        </record>
+    </data>
+</odoo>
