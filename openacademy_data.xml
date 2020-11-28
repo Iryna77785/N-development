@@ -1,0 +1,154 @@
+ <?xml version="1.0" encoding="utf-8"?>
+        <odoo>
+         <data> 
+
+ #<!--action sessions-->
+          <record model="ir.actions.act_windows" id="action_sessions">
+
+                                <field name="name">Sessions</field>
+                                <field name="type">ir.actions.act_windows</field>
+                                <field name="res.model">openacademy.sessions</field>
+                                 <field name="view_type">form</field>
+                                <field name="view_mode">tree,form</field>
+                                <field name="help" type="html">
+                                        <p class="face">Create session</p>
+                                </field>
+
+                        </record>
+#<!--Sessions form view -->
+           <record id="sessions_form" model="ir.ui.view">
+                 <field name="name">openacademy.sessions.form</field>
+                 <field name="res.model">openacademy.sessions</field>
+                 <field name="arch" type="xml">
+                   <form string="Sessions">
+                     <sheet>
+                        <group>
+                           <group>
+                                <field name="name"/>
+                                <field name="state"/>
+                           </group>
+
+                           <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="duration"/>
+                           </group>
+
+                           <group>
+                                <field name="instructor_id"/>
+                                <field name="course_id"/>
+                           </group>
+                        </group>
+                        <group>
+                           <group>
+                                <field name="attendee_ids"/>
+                                <field name="active"/>
+                                <field name="seats"/>
+                                <field name="taken_seats" widget="progressbar"/>
+                           </group>
+                        </group>
+                     </sheet>
+                </form>
+              </field>
+          </record>
+
+#<!--Sessions tree view -->
+        <record id="sessions_tree" model="ir.ui.view">
+                 <field name="name">openacademy.sessions.tree</field>
+                 <field name="res.model">openacademy.sessions</field>
+                 <field name="arch" type="xml">
+                    <tree string="Sessions">
+                                <field name="name"/>
+                                <field name="state"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="duration"/>
+                                <field name="instructor_id"/>
+                                <field name="course_id"/>
+                                <field name="attendee_ids"/>
+                                <field name="active"/>
+                                <field name="seats"/>
+                                <field name="taken_seats" widget="progressbar"/>
+                    </tree>
+                  </field>
+        </record>
+
+                        
+
+#<!--Courses form view-->
+        <record id="courses_form" model="ir.ui.view">
+                  <field name="name">openacademy.courses.form</field>
+                  <field name="res.model">openacademy.courses</field>
+                  <field name="arch" type="xml">
+                     <form string="Courses">
+                        <sheet>
+                             <group>
+                                <group>
+                                     <field name="name"/>
+                                     <field name="description"/>
+                                </group>
+
+                                <group>
+                                     <field name="responsible_id"/>
+                                     <field name="session_ids"/>
+                                </group>
+
+                                <group>
+                                     <field name="level"/>
+                                </group>
+                              </group>
+
+                        </sheet>
+                      </form>
+                </field>
+         </record>
+
+#<!--Courses tree view-->
+        <record id="courses_tree" model="ir.ui.view">
+                <field name="name">openacademy.courses.tree</field>
+                <field name="res.model">openacademy.courses</field>
+                <field name="arch" type="xml">
+                        <tree string="Courses">
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="responsible_id"/>
+                                <field name="session_ids"/>
+                                <field name="level"/>
+                        </tree>
+                </field>
+        </record>
+
+#<!--action courses-->
+                        <record model="ir.actions.act_windows" id="action_courses">
+
+                                <field name="name">Courses</field>
+                                <field name="type">ir.actions.act_windows</field>
+                                <field name="res.model">openacademy.courses</field>
+                                 <field name="view_type">form</field>
+                                <field name="view_mode">tree,form</field>
+                                <field name="help" type="html">
+                                        <p class="face">Create course</p>
+                                </field>
+                        </record>
+                        
+#<!--menuitems-->
+                        <menuitem id="base_openacademy_menu" name="Open Academy" groups="group_openacademy_manager" sequence="0"
+                        web_icon="openacademy,static\description\icon.png"/>
+
+                        <menuitem id = "openacademy_menu" name = "Courses"
+                        groups = "group_openacademy_manager"
+                        parent = "base_openacademy_menu" sequence="0"/>
+
+#<!--sub-menu-->
+                        <menuitem id = "Courses_menu" name = "Courses"
+               groups = "group_openacademy_manager" parent= "openacademy_menu" sequence="2" action="action_courses"/>
+
+                        <menuitem id = "Sessions_menu" name = "Sessions"
+               groups = "group_openacademy_manager" parent= "openacademy_menu" sequence="2" action="action_sessions"/>
+
+
+
+
+                </data>
+
+        </odoo>

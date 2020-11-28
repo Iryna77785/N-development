@@ -1,0 +1,40 @@
+<record id="Course1" model="openacademy.course">
+    <field name="name">Course1</field>
+    <field name="description">Description-Course1</field>
+</record>
+<record id="Course2" model="openacademy.course">
+    <field name="name">Course2</field>
+    <field name="description">Description-Course2</field>
+</record>
+<record id="Course3" model="openacademy.course">
+    <field name="name">Course3</field>
+    <field name="description">Description-Course3</field>
+</record>
+<record id="Session1" model="openacademy.session">
+    <field name="name">Session1</field>
+    <field name="description">Description-Session1</field>
+</record>
+
+<record id="Session2" model="openacademy.session">
+    <field name="name">Session2</field>
+    <field name="description">Description-Session2</field>
+</record>
+<record id="Session3" model="openacademy.session">
+    <field name="name">Session3</field>
+    <field name="description">Description-Session3</field>
+</record>
+
+<record id="Partner1" model="openacademy.partner">
+    <field name="name">Partner1</field>
+    <field name="description">Description-Partner1</field>
+</record>
+
+<record id="Partner2" model="openacademy.partner">
+    <field name="name">Partner2</field>
+    <field name="description">Description-Partner2</field>
+</record>
+
+<record id="Partner3" model="openacademy.partner">
+    <field name="name">Partner3</field>
+    <field name="description">Description-Partner3</field>
+</record>
